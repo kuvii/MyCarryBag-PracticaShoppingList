@@ -1,8 +1,8 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-const ListItem = ({ productName, onProductRemove }) => {
+const ListItem = ({ product, onProductRemove }) => {
   return (
-    <Pressable onPress={() => onProductRemove( productName )}>
+    // <Pressable onPress={() => onProductRemove( product.name )}>
       <View style={styles.listItem}>
         <View style={styles.atomContainer}>
           <Image
@@ -11,10 +11,10 @@ const ListItem = ({ productName, onProductRemove }) => {
           />
         </View>
         <View style={styles.atomContainer}>
-          <Text style={styles.productName}>{productName}</Text>
+          <Text style={styles.productName}>{product.name}</Text>
         </View>
       </View>
-    </Pressable>
+    // </Pressable>
   );
 };
 
