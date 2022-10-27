@@ -1,13 +1,33 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
 const ListItem = ({ product, onProductRemove }) => {
+  let image
+  switch(product.type.toLowerCase()){
+    case "fruit":
+      image = require("../assets/foodTypes/fruit.png")
+    break
+    case "vegetable":
+      image = require("../assets/foodTypes/vegetable.png")
+    break
+    case "meat":
+      image = require("../assets/foodTypes/meat.png")
+    break
+    case "fish":
+      image = require("../assets/foodTypes/fish.png")
+    break
+    case "bakery":
+      image = require("../assets/foodTypes/bakery.png")
+    break
+  }
+
+  
   return (
     // <Pressable onPress={() => onProductRemove( product.name )}>
       <View style={styles.listItem}>
         <View style={styles.atomContainer}>
           <Image
             style={styles.productImage}
-            source={require("../assets/basket.png")}
+            source={image}
           />
         </View>
         <View style={styles.atomContainer}>
@@ -39,6 +59,7 @@ const styles = StyleSheet.create({
   productImage: {
     width: 50,
     height: 50,
+    resizeMode: 'contain'
   },
   productName: {
     fontSize: 15,

@@ -23,7 +23,7 @@ const ProductInput = ({ onProductAdd }) => {
       setProduct({...product, quantity: value})
     }
 
-    const types = ["Fruit", "Vegetables", "Meat", "Fish", "Bakery"]
+    const types = ["Fruit", "Vegetable", "Meat", "Fish", "Bakery"]
 
     const addProductHandler = () => {
       const sanitizedName = product.name.trim()
