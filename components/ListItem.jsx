@@ -44,7 +44,7 @@ const ListItem = ({ product }) => {
 const styles = StyleSheet.create({
   listItem: {
     alignItems: 'center',
-    backgroundColor: 'rgba(200, 66, 16, 0.5)',
+    backgroundColor: 'rgb(222, 142, 23)',
     borderColor: 'rgb(171, 100, 0)',
     borderWidth: 2,
     borderRadius: 15,
@@ -60,9 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   productImage: {
-    borderColor: 'rgb(171, 100, 0)',
     borderRadius: 15,
-    borderWidth: 2,
     height: 50,
     margin: 2,
     resizeMode: 'contain',

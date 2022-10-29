@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   ProductInputBackground: {
-    backgroundColor: 'rgba(200, 66, 16, 0.5)',
+    backgroundColor: 'rgb(222, 142, 23)',
     borderRadius: 10,
     borderColor: 'rgb(171, 100, 0)',
     borderWidth: 2,
