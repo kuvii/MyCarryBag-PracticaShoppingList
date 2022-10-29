@@ -25,6 +25,11 @@ const ProductInput = ({ product, setProduct, onProductAdd }) => {
       setProduct({...product, name: '', quantity: 0, type: ''})
       dropdownRef.current.reset()
     }
+    let showBtn = false
+    product.name == '' || product.quantity == '' || product.type == '' ? showBtn= false : showBtn= true
+    let enBtn =<Pressable style= { styles.unlockedAddButton } title= "Add" onPress= { addProductHandler }><Text>Add</Text></Pressable>
+    let disBtn = <Pressable style={styles.lockedAddButton} title = "Add" disabled><Text>Add</Text></Pressable>
+
   return (
     <View style= { styles.ProductInputBackground }>
       <View style={ styles.productInput }>
@@ -65,12 +70,7 @@ const ProductInput = ({ product, setProduct, onProductAdd }) => {
               }}
 
             />
-            <Pressable 
-            style= { styles.addButton } 
-            title= "Add" 
-            onPress= { addProductHandler }>
-              <Text>Add</Text>
-            </Pressable>
+            {showBtn ? enBtn : disBtn}
         </View>
       </View>
     </View>
@@ -96,9 +96,17 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: '90%',
   },
-  addButton: {
+  unlockedAddButton: {
     alignItems: 'center',
     backgroundColor: 'rgb(0, 255, 255)',
+    borderRadius: 5,
+    justifyContent: 'center',
+    paddingHorizontal: 35,
+    paddingVertical: 10,
+  },
+  lockedAddButton: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 255, 255, 0.3)',
     borderRadius: 5,
     justifyContent: 'center',
     paddingHorizontal: 35,
