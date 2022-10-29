@@ -1,6 +1,6 @@
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-const ListItem = ({ product, onProductRemove }) => {
+const ListItem = ({ product }) => {
   let image
   switch(product.type.toLowerCase()){
     case "fruit":
@@ -19,10 +19,9 @@ const ListItem = ({ product, onProductRemove }) => {
       image = require("../assets/foodTypes/bakery.png")
     break
   }
-
   
   return (
-    // <Pressable onPress={() => onProductRemove( product.name )}>
+    // <Pressable onPress={}>
       <View style={styles.listItem}>
         <View style={styles.atomContainer}>
           <Image

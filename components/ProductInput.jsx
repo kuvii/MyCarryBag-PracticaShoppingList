@@ -1,19 +1,10 @@
 import { useRef, useState } from "react";
 import SelectDropdown from 'react-native-select-dropdown';
-import { v4 as uuidv4 } from "uuid";
 import { StyleSheet, Text, TextInput, View, Pressable } from "react-native";
 
-const ProductInput = ({ onProductAdd }) => {
-  const initProduct = {
-    id: uuidv4(),
-    name: '',
-    type: '',
-    quantity: 0,
-    bought: false,
-  }
-  const dropdownRef = useRef({})
+const ProductInput = ({ product, setProduct, onProductAdd }) => {
 
-    const [product, setProduct] = useState(initProduct)
+  const dropdownRef = useRef({})
 
     const changeTextHandler = (value) => {
       setProduct({...product, name: value})

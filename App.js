@@ -1,22 +1,31 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, ScrollView } from 'react-native';
+import { v4 as uuidv4 } from "uuid";
 import ListItem from './components/ListItem';
 import ProductInput from './components/ProductInput';
 
 export default function App() {
+  const initProduct = {
+    id: uuidv4(),
+    name: '',
+    type: '',
+    quantity: 0,
+    bought: false,
+  }
+
+  const [product, setProduct] = useState(initProduct)
   const [ products, setProducts ] = useState( [] )
 
   const addProductHandler = ( product ) => {
     setProducts( () => [...products, product] )
   }
 
-  // const removeProductHandler = (productName) => {
-  //   setProduct(() => products.filter((product) => product !== productName))
-  // }
 
   return (
     <View style={styles.container}>
         <ProductInput
+          product= {product}
+          setProduct={setProduct}
           onProductAdd = { addProductHandler }
         />
         <View style={styles.productList}>
@@ -24,7 +33,7 @@ export default function App() {
             { 
                 products.length === 0 
                 ? <Text>Aún no hay nada</Text> 
-                : products.map((product, idx) =>  <ListItem key={idx + product.name} product={product} />)
+                : products.map((product, idx) =>  <ListItem key={idx + product.name} product={product}  />)
               }
             </ScrollView>
         </View>
