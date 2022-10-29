@@ -39,31 +39,31 @@ const ListItem = ({ product }) => {
 
 const styles = StyleSheet.create({
   listItem: {
-    margin: 5,
-    padding: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    borderColor: "#F7F7F7",
+    alignItems: 'center',
+    borderColor: '#F7F7F7',
     borderWidth: 3,
     borderRadius: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 5,
+    padding: 5,
     paddingHorizontal: 10,
+    width: '100%',
   },
   atomContainer: {
+    alignItems: 'center',
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
   },
   productImage: {
-    width: 50,
     height: 50,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    width: 50,
   },
   productName: {
+    alignSelf: 'center',
     fontSize: 15,
-    textAlign: "center",
-    alignSelf: "center",
+    textAlign: 'center',
   },
 });
 
