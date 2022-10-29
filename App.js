@@ -28,6 +28,7 @@ export default function App() {
           setProduct={setProduct}
           onProductAdd = { addProductHandler }
           />
+      </View>
         <View style={styles.productList}>
           <ScrollView>
             { 
@@ -37,7 +38,6 @@ export default function App() {
               }
             </ScrollView>
               </View>
-        </View>
     </View>
   )
 }
