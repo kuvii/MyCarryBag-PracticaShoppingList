@@ -23,6 +23,7 @@ const ListItem = ({ product }) => {
   return (
     // <Pressable onPress={}>
       <View style={styles.listItem}>
+        <Text></Text>
         <View style={styles.atomContainer}>
           <Image
             style={styles.productImage}
@@ -30,7 +31,10 @@ const ListItem = ({ product }) => {
           />
         </View>
         <View style={styles.atomContainer}>
-          <Text style={styles.productName}>{product.name}</Text>
+          <Text style={styles.productText}>{product.name}</Text>
+        </View>
+        <View style={styles.atomContainer}>
+          <Text style={styles.productText}>{product.quantity}</Text>
         </View>
       </View>
     // </Pressable>
@@ -39,31 +43,33 @@ const ListItem = ({ product }) => {
 
 const styles = StyleSheet.create({
   listItem: {
-    margin: 5,
-    padding: 5,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    borderColor: "#F7F7F7",
-    borderWidth: 3,
+    alignItems: 'center',
+    backgroundColor: 'rgb(222, 142, 23)',
+    borderColor: 'rgb(171, 100, 0)',
+    borderWidth: 2,
     borderRadius: 15,
-    paddingHorizontal: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+    width: '100%',
   },
   atomContainer: {
+    alignItems: 'center',
     flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
   productImage: {
-    width: 50,
+    borderRadius: 15,
     height: 50,
-    resizeMode: 'contain'
+    margin: 2,
+    resizeMode: 'contain',
+    width: 50,
   },
-  productName: {
+  productText: {
+    alignSelf: 'center',
     fontSize: 15,
-    textAlign: "center",
-    alignSelf: "center",
+    textAlign: 'center',
   },
 });
 

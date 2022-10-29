@@ -20,14 +20,15 @@ export default function App() {
     setProducts( () => [...products, product] )
   }
 
-
   return (
     <View style={styles.container}>
+      <View style={styles.productInput}>
         <ProductInput
           product= {product}
           setProduct={setProduct}
           onProductAdd = { addProductHandler }
-        />
+          />
+      </View>
         <View style={styles.productList}>
           <ScrollView>
             { 
@@ -36,22 +37,25 @@ export default function App() {
                 : products.map((product, idx) =>  <ListItem key={idx + product.name} product={product}  />)
               }
             </ScrollView>
-        </View>
+              </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F3D031',
     alignItems: 'center',
-    justifyContent: 'flex-start',
   },
   productList: {
     flex: 4,
     margin: 20,
     width: '80%',
+  },
+  productInput: {
+    marginTop: 50,
+    width: "90%",
+    alignItems: 'center'
   }
 });
