@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import SelectDropdown from 'react-native-select-dropdown';
 import { v4 as uuidv4 } from "uuid";
 import { StyleSheet, Text, TextInput, View, Pressable } from "react-native";
 
 const ProductInput = ({ onProductAdd }) => {
   const initProduct = {
-    id: 0,
+    id: uuidv4(),
     name: '',
     type: '',
     quantity: 0,
     bought: false,
   }
+  const dropdownRef = useRef({})
+
     const [product, setProduct] = useState(initProduct)
 
     const changeTextHandler = (value) => {
@@ -21,16 +23,18 @@ const ProductInput = ({ onProductAdd }) => {
       setProduct({...product, quantity: value})
     }
 
-    const types = ["Fruit", "Vegetables", "Meat", "Fish", "Bakery"]
+    const types = ["Fruit", "Vegetable", "Meat", "Fish", "Bakery"]
 
     const addProductHandler = () => {
       const sanitizedName = product.name.trim()
+      changeTextHandler(sanitizedName)
       if (sanitizedName !== ''){
-        onProductAdd( sanitizedName )
+        onProductAdd( product )
       }
-      setProduct({...product, name: ''})
-      console.log(product)
+      setProduct({...product, name: '', quantity: 0, type: ''})
+      dropdownRef.current.reset()
     }
+
   return (
     <View style= { styles.ProductInputBackground }>
       <View style={ styles.productInput }>
@@ -53,13 +57,12 @@ const ProductInput = ({ onProductAdd }) => {
         <View style={ styles.productRow } >
         <SelectDropdown
             data={ types }
+            ref = {dropdownRef}
             defaultButtonText= "Select Type"
             onSelect={(selectedItem, index) => {
               setProduct({...product, type: selectedItem})
             }}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              return selectedItem
-            }}
+            buttonTextAfterSelection={(selectedItem, index) => { return selectedItem }}
             rowTextForSelection={(item, index) => {
               return item
             }}
