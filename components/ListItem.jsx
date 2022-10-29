@@ -60,6 +60,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   productImage: {
+    backgroundColor: 'rgb(243, 220, 120)',
+    borderColor: 'rgb(171, 100, 0)',
+    borderWidth: 2,
     borderRadius: 15,
     height: 50,
     margin: 2,
