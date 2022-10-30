@@ -1,6 +1,8 @@
+import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 
-const ListItem = ({ product }) => {
+const ListItem = ({ product, setProduct, reset }) => {
   let image
   switch(product.type.toLowerCase()){
     case "fruit":
@@ -19,10 +21,17 @@ const ListItem = ({ product }) => {
       image = require("../assets/foodTypes/bakery.png")
     break
   }
-  
+  const [newStyle, setNewStyle] = useState(styles.notBoughtItem)
+  const changeItemStyle = () => {
+    setProduct({...product, bought: true})
+    product.bought ? setNewStyle(styles.notBoughtItem) : setNewStyle(styles.boughtItem)
+    reset()
+  }
+
   return (
-    // <Pressable onPress={}>
-      <View style={styles.listItem}>
+    <Pressable onPress={
+      () => changeItemStyle()}>
+      <View style={newStyle}>
         <Text></Text>
         <View style={styles.atomContainer}>
           <Image
@@ -37,14 +46,25 @@ const ListItem = ({ product }) => {
           <Text style={styles.productText}>{product.quantity}</Text>
         </View>
       </View>
-    // </Pressable>
+    </Pressable>
   );
 };
 
 const styles = StyleSheet.create({
-  listItem: {
+  notBoughtItem: {
     alignItems: 'center',
     backgroundColor: 'rgb(222, 142, 23)',
+    borderColor: 'rgb(171, 100, 0)',
+    borderWidth: 2,
+    borderRadius: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+    width: '100%',
+  },
+  boughtItem: {
+    alignItems: 'center',
+    backgroundColor: 'rgb(243, 220, 120)',
     borderColor: 'rgb(171, 100, 0)',
     borderWidth: 2,
     borderRadius: 15,
