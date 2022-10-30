@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, ScrollView, Pressable } from 'react-native';
 import { v4 as uuidv4 } from "uuid";
+import { StyleSheet, View, Text, ScrollView, Pressable } from 'react-native';
 import ListItem from './components/ListItem';
 import ProductInput from './components/ProductInput';
 
@@ -23,6 +23,10 @@ export default function App() {
     setProducts('')
   }
 
+  const reset = () => {
+    setProduct(initProduct)
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.productInput}>
@@ -37,7 +41,7 @@ export default function App() {
             { 
                 products.length === 0 
                 ? <Text>Aún no hay nada</Text> 
-                : products.map((product, idx) =>  <ListItem key={idx + product.name} product={product}  />)
+                : products.map((product, idx) =>  <ListItem key={idx + product.name} product={product} setProduct={setProduct} reset={reset} />)
               }
             </ScrollView>
               </View>
